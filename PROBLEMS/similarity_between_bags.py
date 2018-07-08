@@ -1,3 +1,25 @@
+from collections import Counter
+import math
+
+
+def find_similarity_using_cosine(bag_a, bag_b):
+    """
+    Find the similarity between two list using cosine formula.
+    wiki : https://en.wikipedia.org/wiki/Cosine_similarity
+    """
+    # Converting list into a dict
+    fruits_in_bag_a = Counter(bag_a)
+    fruits_in_bag_b = Counter(bag_b)
+
+    # Finding the fruit combinations
+    fruits = set(fruits_in_bag_a).union(fruits_in_bag_b)
+
+    # Finding the cosine angle of two bags
+    dot_product = sum(fruits_in_bag_a.get(fruit, 0) * fruits_in_bag_b.get(fruit, 0) for fruit in fruits)
+    magnitude_of_bag_a = math.sqrt(sum(fruits_in_bag_a.get(k, 0) ** 2 for k in fruits))
+    magnitude_of_bag_b = math.sqrt(sum(fruits_in_bag_b.get(k, 0) ** 2 for k in fruits))
+    return dot_product / (magnitude_of_bag_a * magnitude_of_bag_b)
+
 
 def find_similarity_score(difference, total_no_fruits):
     """
@@ -28,6 +50,7 @@ if __name__ == '__main__':
     # First convert the fruits in both the bags into a list
     bag_a = ['banana', 'apple', 'orange', 'apple', 'apple']
     bag_b = ['banana', 'banana', 'orange', 'apple', 'orange']
-    result = find_similarity(bag_a, bag_b, fruits_category)
-    print(result)
-
+    # This was my initial solution to the problem
+    initial_result = find_similarity(bag_a, bag_b, fruits_category)
+    # I learnt about cosine similarity after going through some wikis
+    final_result = find_similarity_using_cosine(bag_a, bag_b)
