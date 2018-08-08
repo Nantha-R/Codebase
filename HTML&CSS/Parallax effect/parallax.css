@@ -1,0 +1,45 @@
+body
+{
+  margin: 0;
+}
+div
+{
+  display: flex;
+  font-weight: bold;
+  /* align div at the exact center of the page. */
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h2
+{
+  background: #eee;
+  padding: 8px 24px;
+  border-radius: 16px;
+}
+
+div:nth-child(1)
+{
+  background-image: url(image.jpg);
+  background-size: cover;
+  /* The images are fixed at a particular position */
+  background-attachment: fixed;
+}
+
+div:nth-child(2)
+{
+  background: maroon;
+}
+
+div:nth-child(3)
+{
+  background-image: url(image.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+div:nth-child(4)
+{
+  background: aquamarine;
+}
