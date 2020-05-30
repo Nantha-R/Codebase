@@ -12,4 +12,3 @@ percentile_cont(0.50) within group (order by salary) as salary_p50,
 percentile_cont(0.99) within group (order by salary) as salary_p99,
 percentile_cont(0.9999) within group (order by OUR_PRICE) as salary_p99_99
 from Occupations;
-
